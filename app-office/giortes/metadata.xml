@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<herd>no-herd</herd>
+<maintainer>
+	<email>tampakrap@gentoo.org</email>
+	<name>Theo Chatzimichos</name>
+</maintainer>
+<maintainer>
+	<email>forfolias@linuxteam.cs.teilar.gr</email>
+	<name>George Vasilakos</name>
+	<description>Upstream Developer (plz assign bugs)</description>
+</maintainer>
+<longdescription lang="en">
+Displays the name day that is celebrated
+</longdescription>
+</pkgmetadata>
