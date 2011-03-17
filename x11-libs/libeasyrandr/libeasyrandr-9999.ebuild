@@ -11,7 +11,7 @@ HOMEPAGE="http://github.com/parapente/libEasyRandR"
 EGIT_REPO_URI="git://github.com/parapente/libEasyRandR.git"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS=""
 
 IUSE="doc"
 
