@@ -1,0 +1,3 @@
+#tampakrap's akregator related live ebuilds, meant for personal use only
+=kde-base/akregator-4.6.9999-r1
+=kde-base/krss-4.6.9999-r1
