@@ -24,6 +24,8 @@ RDEPEND="${DEPEND}"
 
 KMLOADLIBS="kdepim-common-libs"
 
+add_blocker akregator
+
 src_prepare() {
 	echo "add_subdirectory(kontact)" >> "${S}/CMakeLists.txt"
 
