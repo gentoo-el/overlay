@@ -5,13 +5,12 @@
 EAPI=4
 
 EGIT_REPO_URI="git://gitorious.org/~kode54/quassel/kode54s-quassel.git"
-EGIT_BRANCH="branch_mysql_support"
-GIT_ECLASS="git-2"
+EGIT_BRANCH="master"
 
 QT_MINIMAL="4.6.0"
 KDE_MINIMAL="4.4"
 
-inherit cmake-utils eutils versionator ${GIT_ECLASS}
+inherit cmake-utils eutils versionator git-2
 
 DESCRIPTION="Qt4/KDE4 IRC client suppporting a remote daemon for 24/7 connectivity."
 HOMEPAGE="http://quassel-irc.org/"
@@ -19,7 +18,9 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE="ayatana crypt dbus debug kde monolithic phonon postgres +server +ssl webkit X"
+IUSE="ayatana crypt dbus debug kde monolithic mysql phonon postgres +server +ssl webkit X"
+
+use mysql && EGIT_BRANCH="branch_mysql_support"
 
 SERVER_RDEPEND="
 	crypt? (
@@ -28,6 +29,7 @@ SERVER_RDEPEND="
 	)
 	!postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[sqlite] dev-db/sqlite[threadsafe,-secure-delete] )
 	postgres? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[postgres] )
+	mysql? ( >=x11-libs/qt-sql-${QT_MINIMAL}:4[mysql] )
 	>=x11-libs/qt-script-${QT_MINIMAL}:4
 "
 
