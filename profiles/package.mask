@@ -1,3 +1,6 @@
-#tampakrap's akregator related live ebuilds, meant for personal use only
+# tampakrap's akregator related live ebuilds, meant for personal use only
 =kde-base/akregator-4.6.9999-r1
 =kde-base/krss-4.6.9999-r1
+
+# quassel live ebuild with mysql support
+=net-irc/quassel-9999
