@@ -4,23 +4,28 @@
 
 EAPI=4
 
-EGIT_REPO_URI="git://gitorious.org/~kode54/quassel/kode54s-quassel.git"
+EGIT_REPO_URI="git://git.quassel-irc.org/quassel.git"
 EGIT_BRANCH="master"
+[[ "${PV}" == "9999" ]] && GIT_ECLASS="git-2"
 
 QT_MINIMAL="4.6.0"
 KDE_MINIMAL="4.4"
 
-inherit cmake-utils eutils versionator git-2
+inherit cmake-utils eutils versionator ${GIT_ECLASS}
 
 DESCRIPTION="Qt4/KDE4 IRC client suppporting a remote daemon for 24/7 connectivity."
 HOMEPAGE="http://quassel-irc.org/"
+[[ "${PV}" == "9999" ]] || SRC_URI="http://quassel-irc.org/pub/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
 IUSE="ayatana crypt dbus debug kde monolithic mysql phonon postgres +server +ssl webkit X"
 
-use mysql && EGIT_BRANCH="branch_mysql_support"
+if use mysql; then
+	EGIT_REPO_URI="git://gitorious.org/~kode54/quassel/kode54s-quassel.git"
+	EGIT_BRANCH="branch_mysql_support"
+fi
 
 SERVER_RDEPEND="
 	crypt? (
