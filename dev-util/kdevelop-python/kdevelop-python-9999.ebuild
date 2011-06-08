@@ -19,5 +19,14 @@ DEPEND="
 	>=dev-util/kdevelop-pg-qt-0.9.0
 	dev-util/kdevelop
 "
-RDEPEND="$DEPEND"
+RDEPEND="${DEPEND}"
 
+RESTRICT="test"
+
+src_compile() {
+	pushd ${WORKDIR}/kdevelop-python-9999_build
+	emake parser
+	popd
+
+	kde4-base_src_configure
+}
