@@ -10,7 +10,7 @@ DESCRIPTION="Fully-featured web platform in bash"
 HOMEPAGE="https://github.com/jayferd/balls"
 EGIT_REPO_URI="git://github.com/jayferd/balls.git"
 
-LICENSE=""
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
