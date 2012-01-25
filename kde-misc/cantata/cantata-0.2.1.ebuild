@@ -11,7 +11,7 @@ HOMEPAGE="http://kde-apps.org/content/show.php?content=147733"
 SRC_URI="http://kde-apps.org/CONTENT/content-files/147733-${P}.tar.bz2"
 
 LICENSE="GPL-2"
-SLOT="0"
+SLOT="4"
 KEYWORDS="~amd64"
 IUSE="kde"
 
