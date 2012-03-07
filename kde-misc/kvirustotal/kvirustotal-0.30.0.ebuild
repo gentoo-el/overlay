@@ -19,7 +19,9 @@ IUSE="kde crypt"
 DEPEND="
 	dev-libs/qjson
 "
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}
+app-crypt/qca
+"
 
 src_configure()
 {
