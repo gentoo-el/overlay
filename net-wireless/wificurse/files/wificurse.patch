@@ -1,0 +1,30 @@
+--- /home/dastergon/oblique-wificurse-5cc1d90/Makefile	2012-03-07 08:27:56.000000000 +0000
++++ Makefile2	2012-03-10 23:39:10.000173288 +0000
+@@ -1,13 +1,13 @@
+-PREFIX ?= /usr/local
+-CC = $(CROSS_COMPILE)gcc
+-CFLAGS ?= -O2
++PREFIX ?= /usr/
++CC ?= $(CROSS_COMPILE)gcc
++CFLAGS += -pthread
+ 
+ SRCS = $(wildcard src/*.c)
+ HDRS = $(wildcard src/*.h)
+ 
+ OBJS = $(SRCS:%.c=%.o)
+-LIBS = -lpthread
+-
++LIBS =
++ 
+ .PHONY: clean all install
+ 
+ ifneq ($(DESTDIR),)
+@@ -20,7 +20,7 @@
+ all: wificurse
+ 
+ wificurse: $(OBJS)
+-	$(CC) $(LDFLAGS) $(LIBS) $(OBJS) -o $@
++	$(CC) ${CFLAGS} $(LDFLAGS) $(LIBS) $(OBJS) -o $@
+ 
+ %.o: %.c $(HDRS)
+ 	$(CC) $(CFLAGS) -c $< -o $@
