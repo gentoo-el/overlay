@@ -26,7 +26,6 @@ src_unpack() {
 
 src_compile() {
 	tc-export CC
-	econf || die
 	emake || die
 }
 
