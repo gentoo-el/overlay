@@ -1,0 +1,48 @@
+# ChangeLog for net-wireless/gnuradio
+# Copyright 1999-2012 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnuradio/ChangeLog,v 1.9 2012/05/06 13:38:45 chithanh Exp $
+
+  06 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  files/gnuradio-3.6.0-cmake-sysconfdir.patch, gnuradio-3.6.0.ebuild:
+  Improve SYSCONFDIR patch.
+
+  06 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gnuradio-3.6.0.ebuild:
+  Add missing cmake define, bug #414861.
+
+*gnuradio-3.6.0 (05 May 2012)
+
+  05 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +files/gnuradio-3.6.0-cmake-sysconfdir.patch, +gnuradio-3.6.0.ebuild,
+  -gnuradio-3.5.3.ebuild, metadata.xml:
+  Version bump.
+
+  04 May 2012; Jeff Horelick <jdhore@gentoo.org> gnuradio-3.5.3.ebuild,
+  gnuradio-3.5.3.2.ebuild:
+  dev-util/pkgconfig -> virtual/pkgconfig
+
+*gnuradio-3.5.3.2 (01 May 2012)
+
+  01 May 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gnuradio-3.5.3.2.ebuild:
+  Version bump.
+
+  18 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gnuradio-3.5.3.ebuild:
+  Fix building in the absence of qt-qt3support, add -j1 to emake install, bug
+  #412449.
+
+  18 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gnuradio-3.5.3.ebuild:
+  Fix removal of useless doc files.
+
+  17 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  gnuradio-3.5.3.ebuild:
+  Drop ~x86 keyword.
+
+*gnuradio-3.5.3 (17 Apr 2012)
+
+  17 Apr 2012; Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org>
+  +gnuradio-3.5.3.ebuild, +metadata.xml:
+  Initial import, bug #90667. Based on ebuild from Lukas Sandström.
+
