@@ -18,9 +18,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}/wificurse.patch"
-}
 src_unpack() {
 	unpack ${A}
 	mv *-${PN}-* "${S}"
