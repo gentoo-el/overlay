@@ -14,27 +14,31 @@ EGIT_REPO_URI="git://gnuradio.org/gnuradio.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="audio doc examples fcd grc qt4 sdl utils wavelet wxwidgets uhd"
-REQUIRED_USE="fcd? ( audio )"
+IUSE="alsa doc examples fcd grc jack oss portaudio qt4 sdl utils wavelet wxwidgets uhd"
+REQUIRED_USE="fcd? ( alsa )"
 
 # bug #348206
 # comedi? ( >=sci-electronics/comedilib-0.7 )
 # uhd? ( dev-libs/uhd )
 RDEPEND=">=dev-lang/orc-0.4.12
 	dev-libs/boost
+	dev-python/cheetah
 	dev-util/cppunit
 	sci-libs/fftw:3.0
 	fcd? ( virtual/libusb:1 )
-	audio? (
+	alsa? (
 		media-libs/alsa-lib
-		media-sound/jack-audio-connection-kit
-		>=media-libs/portaudio-19_pre
 	)
 	grc? (
-		dev-python/cheetah
 		dev-python/lxml
 		dev-python/numpy
 		dev-python/pygtk:2
+	)
+	jack? (
+	        media-sound/jack-audio-connection-kit
+	)
+	portaudio? (
+		>=media-libs/portaudio-19_pre
 	)
 	qt4? (
 		dev-python/PyQt4[X,opengl]
@@ -58,15 +62,22 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
+		dev-python/sphinx
+
 	)
 	grc? (
 		x11-misc/xdg-utils
 	)
+	oss? (
+		virtual/os-headers
+	)
+
 "
 
 # Add support for custom SYSCONFDIR, upstream bug #492
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.6.0-cmake-sysconfdir.patch
+	"${FILESDIR}"/${PN}-3.6.1-automagic-audio.patch
 )
 
 pkg_setup() {
@@ -85,10 +96,14 @@ src_configure() {
 	# TODO: docs are installed to /usr/share/doc/${PN} not /usr/share/doc/${PF}
 	# SYSCONFDIR/GR_PREFSDIR default to install below CMAKE_INSTALL_PREFIX
 	mycmakeargs=(
-		$(cmake-utils_use_enable audio GR_AUDIO)
+		$(cmake-utils_use_enable alsa GR_AUDIO_ALSA)
 		$(cmake-utils_use_enable doc DOXYGEN) \
+		$(cmake-utils_use_enable doc SPHINX) \
 		$(cmake-utils_use_enable fcd GR_FCD) \
 		$(cmake-utils_use_enable grc GRC) \
+		$(cmake-utils_use_enable jack GR_AUDIO_JACK)
+		$(cmake-utils_use_enable oss GR_AUDIO_OSS)
+		$(cmake-utils_use_enable portaudio GR_AUDIO_PORTAUDIO)
 		$(cmake-utils_use_enable utils GR_UTILS) \
 		$(cmake-utils_use_enable wavelet GR_WAVELET) \
 		$(cmake-utils_use_enable wxwidgets GR_WXGUI) \
@@ -106,6 +121,9 @@ src_install() {
 	cmake-utils_src_install
 
 	python_clean_installation_image -q
+
+	# Remove bad shebangs that creep back in during install
+	sed -i '\|#!/usr/bin/python|d' "${ED}"/usr/bin/* || die
 
 	# Install examples to /usr/share/doc/$PF
 	if use examples ; then
