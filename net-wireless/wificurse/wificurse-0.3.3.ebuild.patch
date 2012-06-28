@@ -1,0 +1,19 @@
+*** wificurse-0.3.2.ebuild	2012-04-22 11:10:04.616000039 +0300
+--- wificurse-0.3.3.ebuild	2012-04-22 11:10:04.616000039 +0300
+***************
+*** 23,29 ****
+  }
+  src_unpack() {
+  	unpack ${A}
+! 	mv *-${PN}-* "${S}"	
+  }
+  
+  src_compile() {
+--- 23,29 ----
+  }
+  src_unpack() {
+  	unpack ${A}
+! 	mv *-${PN}-* "${S}"
+  }
+  
+  src_compile() {
