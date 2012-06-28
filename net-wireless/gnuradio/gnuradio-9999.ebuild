@@ -76,7 +76,6 @@ DEPEND="${RDEPEND}
 
 # Add support for custom SYSCONFDIR, upstream bug #492
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.6.0-cmake-sysconfdir.patch
 	"${FILESDIR}"/${PN}-3.6.1-automagic-audio.patch
 )
 
