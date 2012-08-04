@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-admin/puppet/puppet-2.7.13.ebuild,v 1.9 2012/05/31 02:36:58 zmedico Exp $
+# $Header: $
 
 EAPI=4
 USE_RUBY="ruby18 ruby19 ree18"
@@ -14,7 +14,7 @@ inherit elisp-common xemacs-elisp-common eutils ruby-fakegem user
 DESCRIPTION="A system automation and configuration management software"
 HOMEPAGE="http://puppetlabs.com/"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 GPL-2"
 SLOT="0"
 IUSE="augeas diff doc emacs ldap minimal rrdtool selinux shadow sqlite3 vim-syntax xemacs"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86"
@@ -36,15 +36,16 @@ ruby_add_rdepend "
 #	)
 #	stomp? ( dev-ruby/stomp )
 
-DEPEND="${DEPEND}
+DEPEND="
 	emacs? ( virtual/emacs )
 	xemacs? ( app-editors/xemacs )"
 RDEPEND="${RDEPEND}
-	emacs? ( virtual/emacs )
-	xemacs? ( app-editors/xemacs )
 	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
-	selinux? ( sys-libs/libselinux[ruby] )
-	vim-syntax? ( >=app-vim/puppet-syntax-${PV} )
+	selinux? (
+		sys-libs/libselinux[ruby]
+		sec-policy/selinux-puppet
+	)
+	vim-syntax? ( app-vim/puppet-syntax )
 	>=app-portage/eix-0.18.0"
 
 SITEFILE="50${PN}-mode-gentoo.el"
@@ -82,7 +83,9 @@ all_ruby_install() {
 
 	# Initial configuration file
 	insinto /etc/puppet
-	doins conf/gentoo/puppet/puppet.conf
+	# Bug #338439
+	#doins conf/gentoo/puppet/puppet.conf
+	doins conf/redhat/puppet.conf
 
 	# Location of log and data files
 	keepdir /var/{run,log}/puppet
@@ -96,7 +99,7 @@ all_ruby_install() {
 		newconfd "${FILESDIR}"/puppetmaster-2.7.6.confd puppetmaster
 
 		insinto /etc/puppet
-		doins conf/gentoo/fileserver.conf
+		doins conf/redhat/fileserver.conf
 
 		keepdir /etc/puppet/manifests
 		keepdir /etc/puppet/modules
