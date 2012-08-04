@@ -9,7 +9,7 @@ inherit base cmake-utils fdo-mime python git-2
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="http://gnuradio.org/"
-EGIT_REPO_URI="git://gnuradio.org/gnuradio.git" 
+EGIT_REPO_URI="git://gnuradio.org/gnuradio.git"
 
 LICENSE="GPL-3"
 SLOT="0"
