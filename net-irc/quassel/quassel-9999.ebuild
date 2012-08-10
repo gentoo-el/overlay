@@ -20,7 +20,7 @@ HOMEPAGE="http://quassel-irc.org/"
 LICENSE="GPL-3"
 KEYWORDS=""
 SLOT="0"
-IUSE="ayatana crypt dbus debug kde monolithic phonon postgres +server +ssl syslog webkit X"
+IUSE="ayatana crypt dbus debug kde monolithic mysql phonon postgres +server +ssl syslog webkit X"
 
 if use mysql; then
 	EGIT_REPO_URI="git://gitorious.org/~kode54/quassel/kode54s-quassel.git"
