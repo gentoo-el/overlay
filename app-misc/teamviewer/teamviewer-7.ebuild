@@ -15,12 +15,14 @@ SRC_URI="http://www.teamviewer.com/download/teamviewer_linux.tar.gz"
 DEPEND=""
 RDEPEND="${DEPEND}"
 
+S=${WORKDIR}/${PN}${PV}
+
 src_install() {
 
 	local dest="${D}/opt/teamviewer"
 	mkdir -p "${dest}"
-	cp -R "${WORKDIR}/teamviewer-"*/* "${dest}/" || die
+	cp -R "${WORKDIR}/teamviewer"*/. "${dest}" || die
 	exeinto /usr/sbin || die
-	doexe "${FILESDIR}/teamviewer" || die
 	fperms 755 /opt/teamviewer
+
 }
