@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/teamspeak-server-bin/teamspeak-server-bin-3.0.5-r2.ebuild,v 1.1 2012/06/09 17:04:39 trapni Exp $
+# $Header: teamviewer version 7 binary $
 
 EAPI=4
 
@@ -22,7 +22,10 @@ src_install() {
 	local dest="${D}/opt/teamviewer"
 	mkdir -p "${dest}"
 	cp -R "${WORKDIR}/teamviewer"*/. "${dest}" || die
-	exeinto /usr/sbin || die
+	dosym /usr/sbin/teamviewer /opt/teamviewer/teamviewer || die
+#	exeinto /usr/sbin || die
+#	doexe "${WORKDIR}/teamviewer"*"/teamviewer" || die
 	fperms 755 /opt/teamviewer
 
 }
+
