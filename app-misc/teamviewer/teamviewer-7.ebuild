@@ -22,10 +22,16 @@ src_install() {
 	local dest="${D}/opt/teamviewer"
 	mkdir -p "${dest}"
 	cp -R "${WORKDIR}/teamviewer"*/. "${dest}" || die
-	dosym /usr/sbin/teamviewer /opt/teamviewer/teamviewer || die
+	dosym /opt/teamviewer/teamviewer /usr/bin/teamviewer || die
 #	exeinto /usr/sbin || die
 #	doexe "${WORKDIR}/teamviewer"*"/teamviewer" || die
-	fperms 755 /opt/teamviewer
+	fperms 777 /opt/teamviewer
 
 }
 
+pkg_postrm() {
+
+	rm -rf "/opt/${PN}${PV}"
+	rm "/usr/bin/${PN}"
+
+}
