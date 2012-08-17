@@ -23,9 +23,8 @@ src_install() {
 	mkdir -p "${dest}"
 	cp -R "${WORKDIR}/teamviewer"*/. "${dest}" || die
 	dosym /opt/teamviewer/teamviewer /usr/bin/teamviewer || die
-#	exeinto /usr/sbin || die
-#	doexe "${WORKDIR}/teamviewer"*"/teamviewer" || die
-	fperms 777 /opt/teamviewer
+	fowners root /opt/teamviewer/
+	fperms 755 /opt/teamviewer
 
 }
 
