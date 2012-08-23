@@ -8,7 +8,7 @@ DESCRIPTION="Teamviewer remote management software"
 HOMEPAGE="http://www.teamviewer.com"
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 SRC_URI="http://www.teamviewer.com/download/teamviewer_linux.tar.gz"
 
@@ -23,14 +23,14 @@ src_install() {
 	mkdir -p "${dest}"
 	cp -R "${WORKDIR}/teamviewer"*/. "${dest}" || die
 	dosym /opt/teamviewer/teamviewer /usr/bin/teamviewer || die
-	fowners root /opt/teamviewer/
-	fperms 755 /opt/teamviewer
+	fowners root /opt/teamviewer
+	fperms 777 /opt/teamviewer
 
 }
 
 pkg_postrm() {
 
-	rm -rf "/opt/${PN}${PV}"
+	rm -rf "/opt/${PN}"
 	rm "/usr/bin/${PN}"
 
 }

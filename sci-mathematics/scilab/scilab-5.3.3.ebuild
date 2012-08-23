@@ -8,7 +8,7 @@ DESCRIPTION="Scilab scientific software"
 HOMEPAGE="http://www.scilab.org"
 SLOT="0"
 IUSE=""
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 SRC_URI="http://www.scilab.org/download/${PV}/${P}.bin.linux-x86_64.tar.gz"
 
