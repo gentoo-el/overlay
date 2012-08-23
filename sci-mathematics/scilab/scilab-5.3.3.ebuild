@@ -1,6 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Scilab 5.3.3 binary for amd64$
+# $Header: $
 
 EAPI=4
 
@@ -14,10 +14,6 @@ SRC_URI="http://www.scilab.org/download/${PV}/${P}.bin.linux-x86_64.tar.gz"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-#S=${WORKDIR}/${PN}${PV}
-
-echo ${SRC_URI}
 
 src_install() {
 
