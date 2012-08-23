@@ -22,7 +22,7 @@ src_install() {
         cp -R "${WORKDIR}/scilab"*/. "${dest}" || die
         dosym /opt/scilab/bin/scilab /usr/bin/scilab || die
         fowners root /opt/scilab
-        fperms 777 /opt/scilab
+        fperms 755 /opt/scilab
 
 }
 
