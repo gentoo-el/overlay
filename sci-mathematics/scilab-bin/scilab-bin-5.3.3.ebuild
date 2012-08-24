@@ -11,6 +11,8 @@ IUSE=""
 KEYWORDS="~amd64"
 
 MY_PN=${PN/-bin/}
+MY_P=${MY_PN}-${PV}
+S=${WORKDIR}/${MY_P}
 
 SRC_URI="http://www.scilab.org/download/${PV}/${MY_PN}-${PV}.bin.linux-x86_64.tar.gz"
 
@@ -30,8 +32,8 @@ src_install() {
 
 pkg_postrm() {
 
-        rm -rf "/opt/${PN}"
-        rm "/usr/bin/${PN}"
+        rm -rf "/opt/${MY_PN}"
+        rm "/usr/bin/${MY_PN}"
 
 }
 
