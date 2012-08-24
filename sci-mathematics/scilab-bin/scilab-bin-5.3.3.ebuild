@@ -10,7 +10,10 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
-SRC_URI="http://www.scilab.org/download/${PV}/${P}.bin.linux-x86_64.tar.gz"
+MY_PV="5.3.3"
+MY_PN="scilab"
+
+SRC_URI="http://www.scilab.org/download/${MY_PV}/${MY_PN}-${MY_PV}.bin.linux-x86_64.tar.gz"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
