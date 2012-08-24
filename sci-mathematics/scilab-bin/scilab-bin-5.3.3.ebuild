@@ -10,7 +10,7 @@ SLOT="0"
 IUSE=""
 KEYWORDS="~amd64"
 
-MY_PN=$(echo ${PN} | cut -d"-" -f1)
+MY_PN=${PN/-bin/}
 
 SRC_URI="http://www.scilab.org/download/${PV}/${MY_PN}-${PV}.bin.linux-x86_64.tar.gz"
 
