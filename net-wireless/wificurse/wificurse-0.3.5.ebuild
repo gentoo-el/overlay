@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils toolchain-funcs
+inherit eutils toolchain-funcs vcs-snapshot
 
 DESCRIPTION="Wificurse is a wifi jamming tool"
 HOMEPAGE="https://github.com/oblique/wificurse/"
@@ -17,11 +17,6 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-
-src_unpack() {
-	unpack ${A}
-	mv *-${PN}-* "${S}"
-}
 
 src_compile() {
 	tc-export CC
