@@ -1,21 +1,27 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header $
+# $Header: $
 
 EAPI=4
 
-inherit eutils autotools
+inherit autotools eutils
+
+PYTHON_DEPEND="2"
 
 DESCRIPTION="A DJ console for ShoutCast/IceCast streaming"
 HOMEPAGE="http://idjc.sourceforge.net/"
 SRC_URI="mirror://sourceforge/idjc/${P}.tar.gz"
 
-LICENSE="GPL-3"
 SLOT="0"
+LICENSE="GPL-3"
 KEYWORDS="~amd64 ~x86"
-IUSE="aac ffmpeg flac mp3 mp3-streaming mp3-tagging speex"
+IUSE="aac ffmpeg flac mp3 speex"
 
-RDEPEND="dev-python/pygtk
+DEPEND="
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-python/pygtk
 	media-libs/libsamplerate
 	media-libs/libshout
 	media-libs/libsndfile
@@ -25,40 +31,29 @@ RDEPEND="dev-python/pygtk
 	aac? ( media-libs/faad2 )
 	ffmpeg? ( virtual/ffmpeg )
 	flac? ( >=media-libs/flac-1.1.3 )
-	mp3? ( >=media-libs/libmad-0.15.1b )
-	mp3-streaming? ( media-sound/lame )
-	mp3-tagging? ( dev-python/eyeD3 )
-	speex? ( >=media-libs/speex-1.2_rc1 )"
-DEPEND="${RDEPEND}
-	>=dev-util/pkgconfig-0.9.0"
+	mp3? (
+			dev-python/eyeD3
+			media-sound/lame
+			>=media-libs/libmad-0.15.1b
+	)
+	speex? ( >=media-libs/speex-1.2_rc1 )
+"
 
-#src_unpack() {
-	# oldest version is >=media-video/ffmpeg-0.4.9_p20080326 anyway...
-#	for x in $(find . -name "*.[ch]" -print0 | xargs -0 grep -l "#include " ); do
-#		sed -i -e "/avcodec\.h/s:ffmpeg:libavcodec:" $x;
-#	done
-	#if has_version \>=media-video/ffmpeg-0.4.9_p20080326 ; then
-		#for x in $(find . -name "*.[ch]" -print0 | xargs -0 grep -l "#include " ); do
-			#sed -i -e "/avcodec\.h/s:ffmpeg:libavcodec:" $x;
-		#done
-		#for x in $(find . -name "*.[ch]" -print0 | xargs -0 grep -l "#include "); do
-			#sed -i -e "/avformat\.h/s:ffmpeg:libavformat:" $x;
-		#done
-	#fi
-	# This fixes libav support by making configure.ac old ffmpeg detection test fail
-#	epatch "${FILESDIR}/${P}-fix-old-ffmpeg-test.patch"
-#	eautoreconf
-#}
+src_prepare() {
+	epatch "${FILESDIR}/${P}-fix-compressed-docs.1.patch"
+	epatch "${FILESDIR}/${P}-fix-compressed-docs.2.patch"
+	epatch "${FILESDIR}/${P}-qa-desktop-file.patch"
+	eautoreconf
+}
 
 src_configure() {
 	econf \
 		$(use_enable aac mp4)
 }
 
-#src_install() {
-#	emake DESTDIR="${D}" install
-#}
-
+src_install() {
+	dodoc AUTHORS NEWS README ChangeLog || die
+}
 pkg_postinst() {
 	einfo "In order to run idjc you first need to have a JACK sound server running."
 	einfo "With all audio apps closed and sound servers on idle type the following:"
