@@ -26,9 +26,10 @@ RDEPEND="
 	x11-libs/qt-xmlpatterns:4
 	dev-lang/python[xml]
 "
-
-S="${WORKDIR}/semantik-0.8.2"
 WAF_BINARY="${S}/waf"
+PATCHES=(
+	"${FILESDIR}/${P}"-wscript_ldconfig.patch
+)
 
 src_configure() {
 	CCFLAGS="${CFLAGS}" CPPFLAGS="${CXXFLAGS}" LINKFLAGS="${LDFLAGS}" \
