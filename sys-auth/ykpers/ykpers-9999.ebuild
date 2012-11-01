@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 
 src_prepare(){
 	# set correct version in pkgconfig files
-	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
+#	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
 	eautoreconf
 }
 src_configure() {
