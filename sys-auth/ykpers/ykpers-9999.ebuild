@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils git-2
+inherit eutils autotools git-2
 
 DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
 #SRC_URI="http://yubikey-personalization.googlecode.com/files/${P}.tar.gz"
@@ -21,6 +21,11 @@ RDEPEND=">=sys-auth/libyubikey-1.6
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+src_prepare(){
+	# set correct version in pkgconfig files
+	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
+	eautoreconf
+}
 src_configure() {
 	econf $(use_enable static-libs static)
 }
