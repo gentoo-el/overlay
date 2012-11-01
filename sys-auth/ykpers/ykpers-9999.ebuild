@@ -25,12 +25,14 @@ src_prepare(){
 	# set correct version in pkgconfig files
 #	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
 	eautoreconf
+	git submodule init
+	git submodule update
 }
 src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-DOCS=( AUTHORS ChangeLog NEWS README )
+DOCS=( AUTHORS NEWS README )
 
 src_install() {
 	default
