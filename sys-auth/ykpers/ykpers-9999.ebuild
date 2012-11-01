@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils
+inherit eutils git-2
 
 DESCRIPTION="Library and tool for personalization of Yubico's YubiKey"
 #SRC_URI="http://yubikey-personalization.googlecode.com/files/${P}.tar.gz"
