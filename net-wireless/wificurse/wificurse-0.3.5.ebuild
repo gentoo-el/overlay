@@ -6,7 +6,7 @@ EAPI=4
 
 inherit eutils toolchain-funcs vcs-snapshot
 
-DESCRIPTION="Wificurse is a wifi jamming tool"
+DESCRIPTION="A wifi jamming tool"
 HOMEPAGE="https://github.com/oblique/wificurse/"
 SRC_URI="https://github.com/oblique/${PN}/tarball/v${PV} -> ${P}.tar.gz"
 
