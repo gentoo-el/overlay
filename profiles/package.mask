@@ -4,3 +4,5 @@
 
 # quassel live ebuild with mysql support
 =net-irc/quassel-9999
+
+=app-misc/dummy-5
