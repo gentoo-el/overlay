@@ -10,7 +10,7 @@ SRC_URI=""
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="X doc pam"
 
 DEPEND=""
@@ -21,16 +21,7 @@ S="${WORKDIR}"
 src_install() {
 	dodir /var/lib/"${P}"
 	touch "${ED}"/var/lib/"${P}"/installed
-
-	if use X; then
-		touch "${ED}"/var/lib/"${P}"/X
-	fi
-
-	if use doc; then
-		touch "${ED}"/var/lib/"${P}"/doc
-	fi
-
-	if use pam; then
-		touch "${ED}"/var/lib/"${P}"/pam
-	fi
+	use X && touch "${ED}"/var/lib/"${P}"/X
+	use doc && touch "${ED}"/var/lib/"${P}"/doc
+	use pam && touch "${ED}"/var/lib/"${P}"/pam
 }
