@@ -29,9 +29,11 @@ src_configure() {
 	econf --with-gsm-bs
 }
 
-src_install() {
+src_compile() {
 	emake
+}
+
+src_install() {
 	emake install
-#	default
 }
 
