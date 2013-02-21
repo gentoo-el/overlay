@@ -1,11 +1,10 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/net-wireless/gnuradio/gnuradio-3.6.0.ebuild,v 1.3 2012/05/06 13:38:45 chithanh Exp $
+# $Header: $
 
 EAPI=4
-PYTHON_DEPEND="2"
 
-inherit base cmake-utils fdo-mime python git-2
+inherit eutils autotools git-2
 
 DESCRIPTION="Linux Call Router"
 HOMEPAGE="http://isdn.eversberg.eu/"
@@ -19,26 +18,16 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
-PATCHES=(
-    "${FILESDIR}"/${PN}-includes.patch
-	)
-
 src_prepare() {
-#	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
-	sh ./autogen.sh
 	eautoreconf
+	epatch "${FILESDIR}"/${PN}-includes.patch
 }
 
 src_configure() {
 	econf --with-gsm-bs --without-misdn
-	epatch "${FILESDIR}"/${PN}-includes.patch
-}
-
-src_compile() {
-	emake
 }
 
 src_install() {
-	emake install
+	emake DESTDIR="${D}" install
 }
 
