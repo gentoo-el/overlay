@@ -19,6 +19,10 @@ IUSE=""
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+    "${FILESDIR}"/${PN}-includes.patch
+	)
+
 src_prepare() {
 #	sed -i "s/UNKNOWN/${PV}/" git-version-gen || die
 	sh ./autogen.sh
@@ -26,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-gsm-bs
+	econf --with-gsm-bs --without-misdn
 }
 
 src_compile() {
