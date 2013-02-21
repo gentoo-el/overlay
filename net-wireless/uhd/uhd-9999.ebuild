@@ -54,10 +54,10 @@ src_configure() {
 }
 
 src_install() {
-	cmake-utils_src_install
 	insinto /lib/udev/rules.d/
 	doins "${S}"/utils/uhd-usrp.rules
 	insinto /usr/share/${PN}
 	doins -r "${WORKDIR}"/"${image_version}"/share/uhd/images
+	cmake-utils_src_install
 }
 
