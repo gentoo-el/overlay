@@ -1,6 +1,7 @@
-diff -ur a/main.h b/main.h
---- a/main.h	2013-02-21 14:24:24.978802934 +0200
-+++ b/main.h	2013-02-21 11:38:37.494989332 +0200
+diff --git a/main.h b/main.h
+index d571c4b..b1c407c 100644
+--- a/main.h
++++ b/main.h
 @@ -29,6 +29,8 @@
  #include <sys/file.h>
  #include <sys/mman.h>

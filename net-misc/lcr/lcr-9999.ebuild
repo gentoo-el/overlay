@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	econf --with-gsm-bs --without-misdn
+	epatch "${FILESDIR}"/${PN}-includes.patch
 }
 
 src_compile() {
