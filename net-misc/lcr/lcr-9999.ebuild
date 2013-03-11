@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eautoreconf
-	epatch "${FILESDIR}"/${PN}-includes.patch
+#	epatch "${FILESDIR}"/${PN}-includes.patch
 }
 
 src_configure() {
