@@ -4,11 +4,11 @@
 
 EAPI=5
 
-inherit eutils vcs-snapshot multilib
+inherit multilib
 
 DESCRIPTION="Scroll wheel support for urxvt"
 HOMEPAGE="https://aur.archlinux.org/packages/urxvt-vtwheel/"
-SRC_URI="https://dl.dropboxusercontent.com/u/1987095/${P}.tar.gz"
+SRC_URI="http://dev.gentoo.org/~dastergon/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
