@@ -12,7 +12,7 @@ SRC_URI="http://dev.gentoo.org/~dastergon/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="x11-terms/rxvt-unicode[perl]"
 
