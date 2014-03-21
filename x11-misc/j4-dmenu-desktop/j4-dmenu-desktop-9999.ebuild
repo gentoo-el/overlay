@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-util/cmake"
+DEPEND=""
 RDEPEND="x11-misc/dmenu"
 
 src_configure() {
