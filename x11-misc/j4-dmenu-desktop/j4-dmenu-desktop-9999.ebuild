@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-2
+inherit git-2 cmake-utils
 
 DESCRIPTION="A rewrite of i3-dmenu-desktop, which is much faster"
 HOMEPAGE="https://github.com/enkore/j4-dmenu-desktop"
@@ -18,12 +18,17 @@ IUSE=""
 DEPEND="dev-util/cmake"
 RDEPEND="x11-misc/dmenu"
 
+src_configure() {
+	local mycmakeargs=(
+		-DNO_TESTS=1
+	)
+	cmake-utils_src_configure
+}
+
 src_compile() {
-	cmake -DNO_TESTS=1 .
-	make
+	cmake-utils_src_make
 }
 
 src_install() {
-	exeinto /usr/bin
-	doexe j4-dmenu-desktop
+	cmake-utils_src_install
 }
