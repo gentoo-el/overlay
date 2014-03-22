@@ -20,7 +20,8 @@ DEPEND=""
 RDEPEND="x11-libs/gtk+:2
 	gnome-base/gconf
 	dev-libs/nss
-	media-libs/alsa-lib"
+	media-libs/alsa-lib
+	media-fonts/corefonts"
 
 src_unpack() {
 	mkdir ${P}
