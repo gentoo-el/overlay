@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit fdo-mime versionator
+inherit fdo-mime versionator multilib
 
 S=${WORKDIR}
 MY_PV=$(get_after_major_version)
@@ -33,7 +33,7 @@ src_install() {
 	doexe Popcorn-Time libffmpegsumo.so nw.pak
 	doexe "${FILESDIR}"/${PN}
 
-	dosym /lib/libudev.so.1 /opt/${PN}/libudev.so.0
+	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
 	dosym /opt/${PN}/${PN} /opt/bin/${PN}
 
 	insinto /usr/share/applications
