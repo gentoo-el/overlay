@@ -4,16 +4,15 @@
 
 EAPI=5
 
-inherit fdo-mime versionator multilib
+inherit fdo-mime multilib
 
 S=${WORKDIR}
-MY_PV=$(get_after_major_version)
 
 DESCRIPTION="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 HOMEPAGE="http://popcorn.cdnjd.com/"
-SRC_URI="https://raw.githubusercontent.com/popcorn-team/popcorn-app/v${PV}-beta/images/icon.png
-x86?   ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${MY_PV}-Linux-32.tgz )
-amd64? ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${MY_PV}-Linux-64.tgz )"
+SRC_URI="https://raw.githubusercontent.com/popcorn-team/popcorn-app/master/images/icon.png
+x86?   ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${PV}-Linux-32.tar.gz )
+amd64? ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${PV}-Linux-64.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -30,7 +29,7 @@ RDEPEND="x11-libs/gtk+:2
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Popcorn-Time libffmpegsumo.so nw.pak
+	doexe Popcorn-Time libffmpegsumo.so nw.pak package.nw
 	doexe "${FILESDIR}"/${PN}
 
 	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
