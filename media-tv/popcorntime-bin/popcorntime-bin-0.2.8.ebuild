@@ -4,11 +4,9 @@
 
 EAPI=5
 
-inherit fdo-mime multilib
+inherit eutils fdo-mime multilib
 
-S=${WORKDIR}
-
-DESCRIPTION="Stream movies from torrents. Skip the downloads. Launch, click, watch."
+DESCRIPTION="Watch torrent movies instantly"
 HOMEPAGE="http://popcorn.cdnjd.com/"
 SRC_URI="https://raw.githubusercontent.com/popcorn-team/popcorn-app/master/images/icon.png
 x86?   ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${PV}-Linux-32.tar.gz )
@@ -16,24 +14,25 @@ amd64? ( http://popcorn.cdnjd.com/releases/Popcorn-Time-${PV}-Linux-64.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
-RESTRICT="strip splitdebug"
+RESTRICT="splitdebug strip"
 
 DEPEND=""
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="dev-libs/nss
 	gnome-base/gconf
-	dev-libs/nss
+	media-fonts/corefonts
 	media-libs/alsa-lib
-	media-fonts/corefonts"
+	x11-libs/gtk+:2"
+
+S=${WORKDIR}
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Popcorn-Time libffmpegsumo.so nw.pak package.nw
-	doexe "${FILESDIR}"/${PN}
+	doexe Popcorn-Time libffmpegsumo.so package.nw nw.pak
 
 	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
-	dosym /opt/${PN}/${PN} /opt/bin/${PN}
+	make_wrapper ${PN} ./Popcorn-Time /opt/${PN} /opt/${PN} /opt/bin
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${PN}.desktop
