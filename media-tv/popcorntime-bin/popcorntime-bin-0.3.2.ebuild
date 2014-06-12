@@ -9,8 +9,8 @@ inherit eutils fdo-mime multilib
 DESCRIPTION="Watch torrent movies instantly"
 HOMEPAGE="http://popcorn.cdnjd.com/"
 SRC_URI="https://raw.githubusercontent.com/popcorn-official/popcorn-app/master/src/app/images/icon.png
-x86?   ( http://cdn.get-popcorn.com/build/Popcorn-Time-${PV}-Linux-32.tar.gz )
-amd64? ( http://cdn.get-popcorn.com/build/Popcorn-Time-${PV}-Linux-64.tar.gz )"
+x86?   ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux-32.tar.gz )
+amd64? ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux-64.tar.gz )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -29,7 +29,7 @@ S="${WORKDIR}/Popcorn-Time"
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Popcorn-Time libffmpegsumo.so package.nw nw.pak
+	doexe Popcorn-Time libffmpegsumo.so nw.pak
 
 	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
 	make_wrapper ${PN} ./Popcorn-Time /opt/${PN} /opt/${PN} /opt/bin
