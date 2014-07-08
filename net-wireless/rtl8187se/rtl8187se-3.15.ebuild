@@ -26,8 +26,8 @@ src_install() {
 
 pkg_postinst() {
 	linux-mod_pkg_postinst
-	elog '>>> The module r8187se conflicts with r8180. You can blacklist it with:'
-	elog '>>>  `echo "blacklist r8180" > /etc/modprobe.d/r8180_blacklist.conf`'
+	elog '>>> To avoid conflicts with rtl8180, you can blacklist it with:'
+	elog '>>>  `echo "blacklist rtl8180" > /etc/modprobe.d/rtl8180_blacklist.conf`'
 }
 
 pkg_postrm() {
