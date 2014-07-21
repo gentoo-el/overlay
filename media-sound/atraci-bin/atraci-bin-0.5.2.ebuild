@@ -6,10 +6,10 @@ EAPI=5
 
 inherit eutils fdo-mime multilib
 
-DESCRIPTION="Watch torrent movies instantly"
-HOMEPAGE="http://popcorn.cdnjd.com/"
-SRC_URI="x86?   ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux-32.tar.gz )
-		 amd64? ( http://cdn.popcorntime.io/build/Popcorn-Time-${PV}-Linux-64.tar.gz )"
+DESCRIPTION="Free music streaming player"
+HOMEPAGE="http://getatraci.net/"
+SRC_URI="x86?   ( https://github.com/Atraci/Atraci/blob/gh-pages/releases/${PV}/linux32/Atraci.tgz?raw=true -> ${P}-32.tgz )
+		 amd64? ( https://github.com/Atraci/Atraci/blob/gh-pages/releases/${PV}/linux64/Atraci.tgz?raw=true -> ${P}-64.tgz )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -24,14 +24,14 @@ RDEPEND="dev-libs/nss
 	media-libs/alsa-lib
 	x11-libs/gtk+:2"
 
-S="${WORKDIR}/Popcorn-Time"
+S="${WORKDIR}/Atraci"
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Popcorn-Time libffmpegsumo.so nw.pak
+	doexe Atraci libffmpegsumo.so nw.pak
 
 	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
-	make_wrapper ${PN} ./Popcorn-Time /opt/${PN} /opt/${PN} /opt/bin
+	make_wrapper ${PN} ./Atraci /opt/${PN} /opt/${PN} /opt/bin
 
 	insinto /usr/share/applications
 	doins "${FILESDIR}"/${PN}.desktop
