@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer>
+		<email>kolokithas.b@gmail.com</email>
+		<name>Bill Kolokithas</name>
+	</maintainer>
+	<use>
+		<flag name="gpt">GPT with Syslinux support</flag>
+		<flag name="uefi">UEFI support</flag>
+	</use>
+</pkgmetadata>
