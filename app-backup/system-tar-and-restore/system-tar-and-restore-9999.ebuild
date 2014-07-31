@@ -22,7 +22,7 @@ IUSE="ncurses gpt uefi"
 
 DEPEND=""
 RDEPEND="net-misc/wget
-	net-misc/rsync
+	net-misc/rsync[xattr]
 	ncurses? ( dev-util/dialog )
 	gpt?     ( sys-apps/gptfdisk )
 	uefi?    ( sys-fs/dosfstools sys-boot/efibootmgr )"
