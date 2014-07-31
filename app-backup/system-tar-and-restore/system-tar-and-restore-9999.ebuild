@@ -23,7 +23,7 @@ RDEPEND="net-misc/wget
 	uefi?    ( sys-fs/dosfstools sys-boot/efibootmgr )"
 
 src_install() {
-	into /usr/bin
+	exeinto /usr/bin
 	doexe backup.sh restore.sh
 	doman system-tar-and-restore.1
 	dodoc backup.conf
