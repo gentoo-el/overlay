@@ -25,7 +25,8 @@ RDEPEND="net-misc/wget
 	net-misc/rsync[xattr]
 	ncurses? ( dev-util/dialog )
 	gpt?     ( sys-apps/gptfdisk )
-	uefi?    ( sys-fs/dosfstools sys-boot/efibootmgr )"
+	uefi?    ( sys-fs/dosfstools sys-boot/efibootmgr )
+	uefi?    ( sys-boot/grub[grub_platforms_efi-32,grub_platforms_efi-64,grub_platforms_pc] )"
 
 src_install() {
 	exeinto /usr/bin
