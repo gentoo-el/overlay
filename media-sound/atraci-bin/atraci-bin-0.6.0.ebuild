@@ -24,11 +24,11 @@ RDEPEND="dev-libs/nss
 	media-libs/alsa-lib
 	x11-libs/gtk+:2"
 
-S="${WORKDIR}/Atraci"
+S="${WORKDIR}/linux64"
 
 src_install() {
 	exeinto /opt/${PN}
-	doexe Atraci libffmpegsumo.so nw.pak
+	doexe Atraci libffmpegsumo.so nw.pak icudtl.dat
 
 	dosym /$(get_libdir)/libudev.so.1 /opt/${PN}/libudev.so.0
 	make_wrapper ${PN} ./Atraci /opt/${PN} /opt/${PN} /opt/bin
