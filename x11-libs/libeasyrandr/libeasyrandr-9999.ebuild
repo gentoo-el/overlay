@@ -4,7 +4,7 @@
 
 EAPI=4
 
-inherit eutils git cmake-utils
+inherit eutils git-2 cmake-utils
 
 DESCRIPTION="An easy to use c++ library for XRandR"
 HOMEPAGE="http://github.com/parapente/libEasyRandR"
@@ -16,7 +16,7 @@ KEYWORDS=""
 IUSE="doc"
 
 DEPEND="doc? ( app-doc/doxygen )
-		>=x11-libs/qt-core-4.6
+		>=dev-qt/qtcore-4.6
 		>=x11-libs/libXrandr-1.3"
 
 RDEPEND="${DEPEND}"
